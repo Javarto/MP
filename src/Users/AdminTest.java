@@ -8,11 +8,10 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import entidades.equipo.armaduras.Armadura;
 import entidades.equipo.armas.Arma;
 import entidades.esbirros.*;
 import entidades.oferta.Oferta;
-import entidades.pactos.Pacto;
+
 import entidades.personajes.Cazador;
 
 public class AdminTest {

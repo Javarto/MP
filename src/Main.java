@@ -209,14 +209,18 @@ public class Main extends Observable implements java.io.Serializable{
                                     if (buyed) {
                                         for (int i = 0; i < offer.getArmasOffer().size(); i++) {
                                             vendedor.delArma(offer.getArmasOffer().get(i));
+                                            vendedor.delArmasDis(offer.getArmasOffer().get(i));
                                         }
                                         for (int i = 0; i < offer.getArmadurasOffer().size(); i++) {
                                             vendedor.delArmadura(offer.getArmadurasOffer().get(i));
+                                            vendedor.delArmadurasDis(offer.getArmadurasOffer().get(i));
                                         }
                                         for (int i = 0; i < offer.getEsbirrosCompact().size(); i++) {
                                             vendedor.delEsbirro(offer.getEsbirrosCompact().get(i));
+                                            vendedor.delEsbirrosDis(offer.getEsbirrosCompact().get(i));
                                         }
                                         vendedor.addOro(offer.getPrecio());
+                                        
                                         main.delOfferToBuy(offer);
                                         main.addVenta(new Venta(offer, user.getId()));
                                     }

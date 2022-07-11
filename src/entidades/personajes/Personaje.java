@@ -4,6 +4,7 @@ import entidades.equipo.armaduras.Armadura;
 import entidades.equipo.armas.Arma;
 import entidades.esbirros.Demonio;
 import entidades.esbirros.Esbirro;
+import entidades.esbirros.Humano;
 import entidades.oferta.Oferta;
 
 import java.util.ArrayList;
@@ -149,7 +150,16 @@ public abstract class Personaje implements java.io.Serializable {
 
     public boolean buyOffer(Oferta offer) {
         boolean buyed = false;
-        if (offer.getPrecio() <= this.getOro()) {
+        boolean cont = true;
+        if (this instanceof Vampiro) {
+            for (int i = 0; i < offer.getEsbirrosOffer().size(); i++) {
+                if (offer.getEsbirrosOffer().get(i) instanceof Humano) {
+                    cont = false;
+                    break;
+                }
+            }
+        }
+        if ((offer.getPrecio() <= this.getOro()) & (cont)) {
             for (int i = 0; i < offer.getArmasOffer().size(); i++) {
                 this.addArma(offer.getArmasOffer().get(i));
             }
@@ -164,7 +174,7 @@ public abstract class Personaje implements java.io.Serializable {
             System.out.println("Compra realizada con éxito!!");
             buyed = true;
         } else {
-            System.out.println("No tiene sufieciente dinero para hacer la compra.");
+            System.out.println("No puede hacer la compra.");
         }
         return buyed;
     }
